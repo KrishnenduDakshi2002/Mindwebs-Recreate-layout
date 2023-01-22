@@ -1,0 +1,167 @@
+@import "./partials/colors";
+$gap: 1rem;
+.receipt__container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+  padding: $gap;
+  gap: $gap;
+  & > div {
+    // send coins container
+    &:first-child {
+      border-right: 1px solid $text-light-gray;
+      padding-right: 1rem;
+      font-family: sans-serif;
+      color: $text-gray;
+      // Send coin text
+      & > div:nth-child(2) > p {
+        font-size: 1.25rem;
+        color: $text-dark;
+        font-weight: 600;
+        margin: 0.75rem 0;
+      }
+       // paragraph 
+      & > div:nth-child(3) > p{
+        font-size: 0.8rem;
+        line-height: 1rem;
+      }
+    }
+    // receipt container
+    &:last-child {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: $gap;
+
+      & > div {
+        border-radius: 10px;
+        &:nth-child(1),
+        &:nth-child(2),
+        &:nth-child(3) {
+          background-color: $bg-white;
+          overflow: hidden;
+        }
+        // add receipt button container
+        &:nth-child(4) {
+          grid-column: 1 / 4;
+          border: 1px solid $text-light-gray;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          & > button {
+            border: none;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            background: none;
+            & > div{
+                display: flex;
+                align-items: center;
+
+                font-size: 1rem;
+                font-family: Arial, Helvetica, sans-serif;
+                color: $text-gray;
+                font-weight: bold;
+
+                & > p{
+                  margin-left: 0.75rem;
+                }
+
+            }
+          }
+        }
+        //toggle button and text container
+        &:nth-child(5){
+            display: flex;
+            align-items: center;
+            // toggle container
+            & > div:first-child{
+                background-color: $bg-gray;
+                width: 3rem;
+                height: 1.5rem;
+                border-radius: 5px;
+                padding: 2px;
+                margin-right: 1rem;
+
+                & > div{
+                    background-color: $bg-white;
+                    width: 1.5rem;
+                    height: 100%;
+                    border-radius: inherit;
+                }
+            }
+
+            //text
+            & > div:last-child{
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 1.125rem;
+                color:$text-gray;
+                font-weight: bold;
+            }
+        }
+        // send button container
+        &:last-child {
+          grid-column: 3 /4;
+          text-align: end;
+          & > button {
+            border: none;
+            background: none;
+            height: 100%;
+            border-radius: 10px;
+            border: 2px solid $bg-blue-300;
+            padding: 0 1.725rem;
+            color: $bg-blue-300;
+            font-size: large;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: $bg-blue-100;
+          }
+        }
+      }
+    }
+  }
+}
+.receipt__button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: none;
+  background-color: $bg-white;
+  display: grid;
+  grid-template-columns: 1rem 3fr auto;
+  justify-items: start;
+  align-items: center;
+  padding: 0 1rem;
+
+  // left icon container
+  & > div {
+    $icon-height: 1.1rem;
+    &:first-child {
+      width: $icon-height;
+      height: $icon-height;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  & > p {
+    margin: 0 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: "Courier New", Courier, monospace;
+    color: $text-gray;
+    & > span {
+      margin: 0 5px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: $text-gray;
+    }
+  }
+}
+
+.receipt__button_bg_transparent {
+  background-color: transparent;
+}

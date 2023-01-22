@@ -1,0 +1,150 @@
+@import "./partials/colors";
+
+$border-radius: 15px;
+$border-color: $text-light-gray;
+$gap: 1rem
+;
+@mixin BorderStyle {
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+}
+
+.home {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 0.725fr 1.3fr 3fr 4fr;
+  row-gap: $gap;
+  padding: 0 0 0 1rem;
+  // align-items: center;
+  & > div {
+    // dashboard
+    &:nth-child(1) > div {
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      & > h1 {
+        color: $text-dark;
+        font-size: 1.7rem;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      // toggle switch
+      & > div > div {
+        background-color: $bg-gray;
+        display: flex;
+        border-radius: 10px;
+        padding: 0.2rem;
+        color: $text-dark;
+        font-family: sans-serif;
+        & > div {
+          padding: 0.3rem 1.35rem;
+          border-radius: 7px;
+          display: flex;
+          align-items: center;
+        }
+        & > div:first-child {
+          background-color: $bg-white;
+        }
+      }
+    }
+    &:nth-child(2) {
+      & > div {
+        width: 50%;
+        min-width: 35rem;
+        height: 100%;
+        overflow: hidden;
+        // background-color: $bg-orange-400;s
+        @include BorderStyle();
+      }
+    }
+    &:nth-child(3) {
+      @include BorderStyle();
+    }
+    //NFT container
+    &:nth-child(4) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: $gap;
+      & > div {
+        @include BorderStyle();
+  
+        //coins container
+        // &:first-child{
+        //   background-color: yellow;
+        // }
+        // NFT container
+        &:last-child{
+
+          $NFT-Scroll-container-gap: 1.3rem;
+
+          padding: $NFT-Scroll-container-gap;
+          display: grid;
+          grid-template-rows: auto 1fr;
+          row-gap: $NFT-Scroll-container-gap;
+          & > div{
+            // icon and price container
+            &:first-child{
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+
+              // icon and text container
+              & > div:first-child{
+                display: flex;
+                align-items: center;
+
+                // NFT text
+                & > div:nth-child(2) > p{
+                  font-family: Arial, Helvetica, sans-serif;
+                  color: $text-dark;
+                  font-size: 1.15rem;
+                  font-weight: bold;
+                  margin-left: 1rem;
+                }
+              }
+
+              // price text
+              & > div:last-child > p{
+                font-family: sans-serif;
+                font-weight: bold;
+                font-size: 1.15rem;
+
+              }
+            }
+            // NFT Horizontal scroll container
+            &:last-child{
+              $NFT-col-gap:1.2rem;
+              display: grid;
+              column-gap: $NFT-col-gap;
+              grid-auto-flow: column;
+              grid-auto-columns: minmax(15rem,calc(50% - calc($NFT-col-gap / 2)));
+              overflow-x: scroll;
+            }
+          }
+        }
+
+
+      }
+
+    }
+  }
+}
+
+.custom__icon__button {
+  border: none;
+  background: none;
+  background-color: $bg-white;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+
+/* this is for Chrome and Safari */
+.scrollbar-hidden::-webkit-scrollbar{
+  display: none;
+}
+/* This is for Firefox */
+.scrollbar-hidden{
+  scrollbar-width: none;
+}
+

@@ -1,0 +1,109 @@
+@import './partials/colors','./partials/breakpoints';
+
+
+
+.navbar{
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+
+    & > div{
+        // logo and seachbar container
+        &:first-child{
+            display: flex;
+            padding: 0 2rem 0 0;
+            align-items: center;
+            // logo container
+            & > div:first-child{
+                display: flex;
+                align-items: center;
+                padding-left: 1rem;
+                flex: 1 0 7rem;
+                margin-right: 4rem;
+            }
+            & > div > img{
+                margin-left: 1rem;
+                width: 9rem;
+                cursor: pointer;
+            }
+            .sidebar__toggle__btn{
+                border: none;
+                background: none;
+                cursor: pointer;
+            }
+            // seachbar container
+            & > div:last-child{
+                flex: 3 0 auto;
+            }
+
+        }
+        &:last-child{
+            // background-color: $bg-yellow-300;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            padding: 0 0 0 5rem;
+
+            & > div{
+                // darkmode
+                &:nth-child(1){
+                    color: $text-dark;
+                    margin: 0 1rem;
+                }
+                // language
+                &:nth-child(2){
+                    display: flex;
+                    align-items: center;
+                    color: $text-dark;
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-weight: bold;
+                    background-color: $bg-white;
+                    padding: 0.6rem 0.5rem;
+                    margin: 0 1.5rem;
+                    border-radius: 10px;
+                    font-size: 0.9rem;
+                    & > p{
+                        margin-right: 0.7rem;
+                    }
+                }
+                // user profile
+                &:nth-child(3){
+                    padding: 2px;
+                    border-radius: 10px;
+                    display: flex;
+                    align-items: center;
+                    background-color: $bg-white;
+                    font-weight: bold;
+                    font-family: 'Courier New', Courier, monospace;
+                    font-size: 1rem;
+                    color: $text-dark;
+                    & > div{
+                        padding: 0.5rem 1.25rem;
+                    }
+                    & > div:first-child{
+                        border-radius: inherit;
+                        background-color: $bg-gray;
+                        white-space: nowrap;
+                    }
+                    & > div:last-child{
+                        padding: 0;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-right: 1rem;
+
+                        & >img{
+                            height: 1.5rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width : $large-laptop){
+    .sidebar__toggle__btn{
+        display: none;
+    }
+}

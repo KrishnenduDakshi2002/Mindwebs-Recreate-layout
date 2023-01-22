@@ -1,0 +1,33 @@
+@import './partials/colors';
+
+
+.footer{
+    border-top: 1px solid $text-light-gray;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    &> div{
+        font-family: Arial, Helvetica, sans-serif;
+        color: $text-gray;
+        // copyright and designer/ developer
+        &:first-child{
+            // background-color: red;
+            display: flex;
+            align-items: center;
+            flex: 2 0 auto;
+
+            & > div:nth-child(1){
+                margin-right: 8rem;
+
+            }
+        }
+        // services
+        &:last-child{
+            flex: 1 0 auto;
+            display: grid;
+            grid-template-columns: repeat(5,auto);
+            justify-items: end;
+
+        }
+    }
+}

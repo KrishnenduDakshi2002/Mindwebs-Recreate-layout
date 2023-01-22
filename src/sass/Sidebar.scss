@@ -1,0 +1,60 @@
+@import './partials/colors';
+
+$padding-right-side : 1.2rem;
+
+@mixin sidebarButton($background,$font-color,$active){
+    width: 100%;
+    border: none;
+    background: none;
+    background-color: $background;
+    padding: 0.725rem 1rem;
+    border-radius: 10px;
+    color: $font-color;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+
+    display: flex;
+    & > div{
+        display: flex;
+        align-items: center;
+        // justify-content: center;
+        width: 100%;
+        padding: 0 1.3rem;
+
+        & > div{
+            margin-right: 1.7rem;
+        }
+    }
+
+    @if $active == false{
+        &:hover{
+            background-color: $bg-blue-100;
+        }
+    }
+
+}
+
+.sidebar{
+    height: 100%;
+    padding: 0 $padding-right-side 0 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    // sign-out button contaiber
+    & > div:last-child{
+        width: 100%;
+        position: absolute;
+        bottom: 0 ;
+        padding-right: $padding-right-side;
+    }
+}
+
+.sidebar__button{
+    @include sidebarButton($background : 'transparent',$font-color: $text-gray,$active:false)
+}
+.sidebar__button__active{
+    @include sidebarButton($background : $bg-blue-300,$font-color: $bg-white,$active:true)
+}

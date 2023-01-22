@@ -1,0 +1,27 @@
+@import './partials/colors';
+
+.user__profile{
+    // background-color:red;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    align-items: center;
+    padding: 0 1.5rem;
+    & > div{
+        &:first-child{
+            // background-color: yellow;
+            display: flex;
+
+            & > div{
+                height: 100%;
+                display: flex;
+                align-items: center;
+                width: 3rem;
+                & > img{
+                    max-height: 100%;
+                    max-width: 100%;
+                }   
+            }
+        }
+    }
+}
