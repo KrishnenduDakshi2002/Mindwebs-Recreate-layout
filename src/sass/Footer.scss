@@ -1,56 +1,57 @@
-@import './partials/colors','./partials/breakpoints','./partials/media';
+@import "./partials/colors", "./partials/breakpoints", "./partials/media";
 
-
-.footer{
-    border-top: 1px solid $text-light-gray;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    height: 100%;
-    &> div{
-        font-family: Arial, Helvetica, sans-serif;
-        color: $text-gray;
-        // copyright and designer/ developer
-        &:first-child{
-            display: flex;
-            align-items: center;
-            flex: 2 0 auto;
-
-            justify-content: space-between;
-            @include for-laptop{
-                justify-content: flex-start;
-            }
-
-            & > div:nth-child(1){
-                margin-right: 8rem;
-
-            }
-        }
-        // services
-        &:last-child{
-            flex: 1 0 auto;
-            display: grid;
-            grid-template-columns: repeat(5,auto);
-            justify-items: end;
-
-            & > div{
-                margin-left: 2rem;
-                background-color: red;
-            }
-
-        }
+.footer {
+  border-top: 1px solid $text-light-gray;
+  background-color: $bg-light;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  height: 100%;
+  & > div {
+    font-family: Arial, Helvetica, sans-serif;
+    color: $text-gray;
+    font-size: 0.85rem;
+    @include for-phone {
+      font-size: 1rem;
     }
+    // copyright and designer/ developer
+    &:first-child {
+      display: flex;
+      align-items: center;
+      flex: 2 0 auto;
+
+      justify-content: space-between;
+      @include for-laptop {
+        justify-content: flex-start;
+      }
+
+      & > div:nth-child(1) {
+        margin-right: 8rem;
+      }
+    }
+    // services
+    &:last-child {
+      flex: 1 0 auto;
+      display: grid;
+      grid-template-columns: repeat(5, auto);
+      justify-items: end;
+
+      & > div {
+        margin-left: 2rem;
+      }
+    }
+  }
 }
 
-@media (max-width: $laptop){
-    .footer{
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(2,1fr);
+@media (max-width: $laptop) {
+  .footer {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .footer > div:last-child {
+    justify-items: center;
+    & > div {
+      margin: 0;
     }
-    .footer > div:last-child{
-        justify-items: center;
-         & >div{
-            margin: 0;
-         }
-    }
+  }
 }

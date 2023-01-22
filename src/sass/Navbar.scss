@@ -9,7 +9,6 @@
   & > div {
     // logo and seachbar container
     &:first-child {
-    //   background-color: yellow;
       display: flex;
       padding: 0 2rem 0 0;
       align-items: center;
@@ -38,12 +37,6 @@
         border: none;
         background: none;
         cursor: pointer;
-      }
-      // seachbar container
-      & > div:last-child {
-        // flex: 3 2 auto;
-        width: 100%;
-        max-width: 25rem;
       }
     }
     &:last-child {
@@ -86,6 +79,11 @@
     }
   }
 }
+
+.navbar__searchbar__container{
+  width: 50%;
+}
+
 .navbar__userprofile {
   display: none;
     cursor: pointer;

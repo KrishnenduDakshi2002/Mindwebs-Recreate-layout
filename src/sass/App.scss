@@ -15,7 +15,7 @@ $row-gap:1.6rem;
     top: calc($navbar-height + $row-gap);
     width: $sidebar-width;
     left: $padding-horizontal-body;
-    height: calc(100vh - $footer-height - $navbar-height - calc(2 * $row-gap));
+    height: calc(100% - $footer-height - $navbar-height - calc(2 * $row-gap));
 
     transition-duration: 300ms;
     transition-timing-function: ease-in-out;
@@ -65,13 +65,21 @@ $row-gap:1.6rem;
 
 // sliding sidebar
 .sliding__sidebar__container{
-    transform: translateX(calc(-100% - $padding-horizontal-body));
     @include SlidingSideBar();
+    transform: translateX(calc(-100% - 2rem));
+    @include for-tablet-landscape{
+        transform: translateX(calc(-100% - $padding-horizontal-body));
+    }
 }
 
 .sliding__sidebar__container__slide{
     @include SlidingSideBar();
-    transform: translateX(0);
+    transform: translateX(-2rem);
+    
+    @include for-tablet-landscape{
+        transform: translateX(0);
+    }
+    
 }
 
 

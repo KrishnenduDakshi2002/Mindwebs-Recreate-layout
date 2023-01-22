@@ -47,7 +47,7 @@ const BUTTONS = [
     text: "Broadcast",
   },
 ];
-function Sidebar({ toggleMiniSidebar }: { toggleMiniSidebar: boolean }) {
+function Sidebar({ toggleMiniSidebar,className }: { toggleMiniSidebar: boolean;className?:string;}) {
   const [active, setActive] = useState(0);
   return (
     <div className={`sidebar`}>
@@ -59,6 +59,7 @@ function Sidebar({ toggleMiniSidebar }: { toggleMiniSidebar: boolean }) {
           active={i === active ? true : false}
           index={i}
           text={button.text}
+          className={className}
         />
       ))}
 
@@ -84,7 +85,8 @@ function SidebarButton({
   setActive,
   Icon,
   hideText,
-  backgroundColor
+  backgroundColor,
+  className,
 }: {
   index: number | string;
   text: string;
@@ -93,13 +95,14 @@ function SidebarButton({
   Icon: IconType;
   hideText: boolean;
   backgroundColor?:string;
+  className?:string; 
 }) {
   return (
     <button
       onClick={() => setActive()}
       key={index}
       style={{backgroundColor : backgroundColor != "" ? backgroundColor : ''}}
-      className={`${active ? "sidebar__button__active" : "sidebar__button"}`}
+      className={`${active ? "sidebar__button__active" : "sidebar__button"}  ${className}`}
     >
       <div>
         <div>

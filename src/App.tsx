@@ -6,7 +6,6 @@ import Home from './Components/Home'
 import Footer from './Components/Footer'
 const App = () => {
   const [ToggleSidebar, setToggleSidebar] = useState(false);
-  console.log(ToggleSidebar);
   return (
     <div className='body'>
       <div>
@@ -22,7 +21,7 @@ const App = () => {
       </div>
       {/* sliding sidebar */}
       <div className={`${ToggleSidebar ? 'sliding__sidebar__container__slide':'sliding__sidebar__container'}`}>
-        <Sidebar toggleMiniSidebar={false}/>
+        <Sidebar toggleMiniSidebar={false} className='sliding__sidebar__button_style'/>
       </div>
       <div>
         <Home/>

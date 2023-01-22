@@ -111,11 +111,17 @@ function Button({
         {LeftText}
         <span>{RightText}</span>
       </p>
-      {RightIcon != null && (
+      {RightIcon != null ? (
         <div>
           <RightIcon size={20} />
         </div>
-      )}
+      )
+        :(
+          <div className="max__button__container">
+            MAX
+          </div>
+        )
+    }
     </button>
   );
 }

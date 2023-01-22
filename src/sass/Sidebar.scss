@@ -86,3 +86,13 @@ $padding-right-side: 1.2rem;
         }
     }
 }
+
+.sliding__sidebar__button_style{
+  & > div{
+    justify-content: start;
+    & > div {
+        margin-right: 1.7rem;
+    }
+  }
+
+}
