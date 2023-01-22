@@ -6,6 +6,13 @@ import { BsImage } from "react-icons/bs";
 import UserProfile from "./UserProfile";
 import { IconType } from "react-icons";
 import NFT from "./NFT";
+import Coin from "./Coin";
+import NFT1 from '../assets/nft-1.jpeg';
+import NFT2 from '../assets/nft-2.jpeg';
+import NFT3 from '../assets/nft-3.jpeg';
+import NFT4 from '../assets/nft-4.png';
+import NFT5 from '../assets/nft-5.jpeg';
+import NFT6 from '../assets/nft-6.jpeg';
 function Home() {
   return (
     <div className="home">
@@ -23,13 +30,17 @@ function Home() {
         </div>
       </div>
       <div>
-        <div><UserProfile /></div>
+        <div>
+          <UserProfile />
+          </div>
       </div>
       <div>
         <Receipt />
       </div>
       <div>
-        <div>coins</div>
+        <div>
+          <Coin/>
+        </div>
         <div>
           {/* Icon + text   Price container */}
           <div>
@@ -53,8 +64,8 @@ function Home() {
             </div>
           </div>
           <div className="scrollbar-hidden">
-            <NFT />
-            <NFT />
+            <NFT images={[NFT1,NFT2,NFT3]} title="Rariable" price="$411.88" noOfPhotos={36}/>
+            <NFT images={[NFT4,NFT5,NFT6]} title="BitTeam Marketplace" price="$165.00" noOfPhotos={4}/>
             {/* <NFT /> */}
           </div>
         </div>

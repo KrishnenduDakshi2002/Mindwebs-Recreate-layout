@@ -9,6 +9,12 @@
   transform: translateX($x-offset);
   position: relative;
   z-index: $z-index;
+  overflow: hidden;
+
+  & > img{
+    object-fit: cover;
+    max-height: 100%;
+  }
 }
 
 @mixin Shadow {
@@ -26,13 +32,13 @@
 .nft {
   background-color: $bg-white;
   border-radius: 10px;
-  padding: 0.3rem;
   overflow: hidden;
+  padding: 0.3rem;
   & > div {
     // cards container
     &:first-child {
       background-color: $bg-light;
-      border-radius: inherit;
+      border-radius: 5px;
       height: 65%;
       //small cards
       display: flex;

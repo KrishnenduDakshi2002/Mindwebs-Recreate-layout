@@ -1,10 +1,8 @@
-import React from "react";
 import "../dist/css/Receipt.css";
 import { IoArrowUp, IoLogoBitcoin } from "react-icons/io5";
 import { IconType } from "react-icons";
 import { IoIosArrowDown, IoMdCheckmarkCircle } from "react-icons/io";
 import { HiQrCode } from "react-icons/hi2";
-import { FaBitcoin } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa";
 import { HiPlus } from "react-icons/hi";
 import { CustomIconButton } from "./Home";

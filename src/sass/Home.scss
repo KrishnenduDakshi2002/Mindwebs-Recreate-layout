@@ -2,8 +2,8 @@
 
 $border-radius: 15px;
 $border-color: $text-light-gray;
-$gap: 1rem
-;
+$gap: 1rem;
+$Padding-in-children : 1.3rem;
 @mixin BorderStyle {
   border: 1px solid $border-color;
   border-radius: $border-radius;
@@ -12,10 +12,11 @@ $gap: 1rem
 .home {
   height: 100%;
   display: grid;
-  grid-template-rows: 0.725fr 1.3fr 3fr 4fr;
+  grid-template-rows: 0.725fr 1.5fr 3fr 4fr;
   row-gap: $gap;
   padding: 0 0 0 1rem;
-  // align-items: center;
+  // can be scrolled for small screens and static
+  // overflow: auto;
   & > div {
     // dashboard
     &:nth-child(1) > div {
@@ -47,37 +48,41 @@ $gap: 1rem
         }
       }
     }
+    // Userprofile
     &:nth-child(2) {
       & > div {
         width: 50%;
         min-width: 35rem;
         height: 100%;
         overflow: hidden;
-        // background-color: $bg-orange-400;s
+        padding: $Padding-in-children;
+        // background-color: $bg-orange-400;
         @include BorderStyle();
       }
     }
+    // receipt container
     &:nth-child(3) {
       @include BorderStyle();
+      padding: $Padding-in-children;
     }
     //NFT container
     &:nth-child(4) {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       column-gap: $gap;
+      overflow: hidden;
       & > div {
         @include BorderStyle();
   
         //coins container
-        // &:first-child{
-        //   background-color: yellow;
-        // }
+        &:first-child{
+          padding: $Padding-in-children 0 $Padding-in-children $Padding-in-children;
+          overflow: hidden;
+        }
         // NFT container
         &:last-child{
-
           $NFT-Scroll-container-gap: 1.3rem;
-
-          padding: $NFT-Scroll-container-gap;
+          padding: $Padding-in-children;
           display: grid;
           grid-template-rows: auto 1fr;
           row-gap: $NFT-Scroll-container-gap;

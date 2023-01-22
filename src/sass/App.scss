@@ -36,6 +36,7 @@ $row-gap:1.6rem;
     padding: 0 $padding-horizontal-body;
     row-gap: $row-gap;
     position: relative;
+    overflow: auto;
 
     // selecting direct child div not all div child
     & > div{
@@ -45,6 +46,9 @@ $row-gap:1.6rem;
         // mini sidebar
         &:nth-child(3){
             display: none;
+        }
+        &:nth-child(5){
+            overflow: auto;
         }
         
     }

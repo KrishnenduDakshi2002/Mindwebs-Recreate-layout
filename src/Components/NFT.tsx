@@ -1,31 +1,29 @@
 import React from "react";
 import "../dist/css/NFT.css";
-import {ImStack} from 'react-icons/im'
-function NFT() {
+import {ImStack} from 'react-icons/im';
+function NFT({images,title,price,noOfPhotos}:{images:Array<string>,title:string,price:string;noOfPhotos:number}) {
   return (
     <div className="nft">
       {/* cards container */}
       <div>
         {/* cards */}
-        <div>
-          <img />
-        </div>
-        <div>
-          <img />
-        </div>
-        <div>
-          <img />
-        </div>
+        {
+          images.map((image,i)=>(
+          <div key={i}>
+            <img src={image}/>
+          </div>
+          ))
+        }
         {/* stack icon */}
         <div>
           <ImStack size={12}/>
-          <span>36</span>
+          <span>{noOfPhotos}</span>
         </div>
       </div>
 
       <div>
-        <p>Rarible</p>
-        <p>$411.88</p>
+        <p>{title}</p>
+        <p>{price}</p>
       </div>
     </div>
   );
