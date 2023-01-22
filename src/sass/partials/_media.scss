@@ -1,0 +1,37 @@
+@import './breakpoints';
+
+@mixin for-large-laptop{
+    @media (min-width : $large-laptop){@content;}
+}
+
+@mixin for-laptop{
+    @media (min-width : $laptop) {
+        @content;
+    }
+}
+@mixin for-tablet-landscape{
+    @media (min-width : $tablet-landscape) {
+        @content;
+    }
+}
+@mixin for-tablet-portrait{
+    @media (min-width : $tablet-portrait) {
+        @content;
+    }
+}
+@mixin for-phone{
+    @media (min-width : $phone) {
+        @content;
+    }
+}
+
+@mixin for-screen($screen){
+    @media (min-width : $screen ) {
+        @content;
+    }
+}
+@mixin for-screen-max-width($screen){
+    @media (max-width : $screen ) {
+        @content;
+    }
+}

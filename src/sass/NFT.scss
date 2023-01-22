@@ -29,6 +29,56 @@
   }
 }
 
+.nft__container{
+  // NFT container
+    height: 100%;
+    $NFT-Scroll-container-gap: 1.3rem;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    row-gap: $NFT-Scroll-container-gap;
+    & > div{
+      // icon and price container
+      &:first-child{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        // icon and text container
+        & > div:first-child{
+          display: flex;
+          align-items: center;
+
+          // NFT text
+          & > div:nth-child(2) > p{
+            font-family: Arial, Helvetica, sans-serif;
+            color: $text-dark;
+            font-size: 1.15rem;
+            font-weight: bold;
+            margin-left: 1rem;
+          }
+        }
+
+        // price text
+        & > div:last-child > p{
+          font-family: sans-serif;
+          font-weight: bold;
+          font-size: 1.15rem;
+
+        }
+      }
+      // NFT Horizontal scroll container
+      &:last-child{
+        $NFT-col-gap:1.2rem;
+        display: grid;
+        column-gap: $NFT-col-gap;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(15rem,calc(50% - calc($NFT-col-gap / 2)));
+        overflow-x: scroll;
+      }
+    }
+  }
+
+
 .nft {
   background-color: $bg-white;
   border-radius: 10px;

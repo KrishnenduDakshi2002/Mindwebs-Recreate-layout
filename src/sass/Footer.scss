@@ -1,9 +1,10 @@
-@import './partials/colors';
+@import './partials/colors','./partials/breakpoints','./partials/media';
 
 
 .footer{
     border-top: 1px solid $text-light-gray;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto;
     align-items: center;
     height: 100%;
     &> div{
@@ -11,10 +12,14 @@
         color: $text-gray;
         // copyright and designer/ developer
         &:first-child{
-            // background-color: red;
             display: flex;
             align-items: center;
             flex: 2 0 auto;
+
+            justify-content: space-between;
+            @include for-laptop{
+                justify-content: flex-start;
+            }
 
             & > div:nth-child(1){
                 margin-right: 8rem;
@@ -28,6 +33,24 @@
             grid-template-columns: repeat(5,auto);
             justify-items: end;
 
+            & > div{
+                margin-left: 2rem;
+                background-color: red;
+            }
+
         }
+    }
+}
+
+@media (max-width: $laptop){
+    .footer{
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2,1fr);
+    }
+    .footer > div:last-child{
+        justify-items: center;
+         & >div{
+            margin: 0;
+         }
     }
 }

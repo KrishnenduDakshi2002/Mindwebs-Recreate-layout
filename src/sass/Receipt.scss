@@ -1,17 +1,36 @@
 @import "./partials/colors";
-$gap: 1rem;
+@import "./partials/media";
+$gap: 0.75rem;
+$breakpoint-layout: 1140px;
+
 .receipt__container {
   height: 100%;
   display: grid;
-  grid-template-columns: 10rem 1fr;
+
+  grid-template-rows: 1.2fr 3fr;
+
+  @include for-phone{
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1.5fr;
+  }
+
+  @include for-laptop {
+    grid-template-columns: 10rem 1fr;
+    grid-template-rows: 1fr;
+  }
+
   gap: $gap;
   & > div {
     // send coins container
     &:first-child {
-      border-right: 1px solid $text-light-gray;
+      @include for-laptop {
+        border-right: 1px solid $text-light-gray;
+      }
+
       padding-right: 1rem;
       font-family: sans-serif;
       color: $text-gray;
+
       // Send coin text
       & > div:nth-child(2) > p {
         font-size: 1.25rem;
@@ -19,8 +38,8 @@ $gap: 1rem;
         font-weight: 600;
         margin: 0.5rem 0;
       }
-       // paragraph 
-      & > div:nth-child(3) > p{
+      // paragraph
+      & > div:nth-child(3) > p {
         font-size: 0.8rem;
         line-height: 1rem;
       }
@@ -28,7 +47,17 @@ $gap: 1rem;
     // receipt container
     &:last-child {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns: 1fr;
+
+      @include for-phone {
+        grid-template-columns: 3fr 2fr;
+      }
+
+      @include for-screen($screen: $breakpoint-layout) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
       gap: $gap;
 
       & > div {
@@ -38,10 +67,23 @@ $gap: 1rem;
         &:nth-child(3) {
           background-color: $bg-white;
           overflow: hidden;
+
+          @include for-screen-max-width($screen: $breakpoint-layout) {
+            grid-column: 1 / 2;
+          }
         }
         // add receipt button container
         &:nth-child(4) {
-          grid-column: 1 / 4;
+          @include for-phone {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+          }
+
+          @include for-screen($screen: $breakpoint-layout) {
+            grid-column: 1 / 4;
+            grid-row: 2 / 3 ;
+          }
+
           border: 1px solid $text-light-gray;
           overflow: hidden;
           display: flex;
@@ -56,54 +98,71 @@ $gap: 1rem;
             align-items: center;
             cursor: pointer;
             background: none;
-            & > div{
-                display: flex;
-                align-items: center;
+            & > div {
+              display: flex;
+              align-items: center;
 
-                font-size: 1rem;
-                font-family: Arial, Helvetica, sans-serif;
-                color: $text-gray;
-                font-weight: bold;
+              font-size: 1rem;
+              font-family: Arial, Helvetica, sans-serif;
+              color: $text-gray;
+              font-weight: bold;
 
-                & > p{
-                  margin-left: 0.75rem;
-                }
-
+              & > p {
+                margin-left: 0.75rem;
+              }
             }
           }
         }
         //toggle button and text container
-        &:nth-child(5){
-            display: flex;
-            align-items: center;
-            // toggle container
-            & > div:first-child{
-                background-color: $bg-gray;
-                width: 3rem;
-                height: 1.5rem;
-                border-radius: 5px;
-                padding: 2px;
-                margin-right: 1rem;
+        &:nth-child(5) {
+          display: flex;
+          align-items: center;
 
-                & > div{
-                    background-color: $bg-white;
-                    width: 1.5rem;
-                    height: 100%;
-                    border-radius: inherit;
-                }
-            }
+          @include for-phone {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+          }
 
-            //text
-            & > div:last-child{
-                font-family: Arial, Helvetica, sans-serif;
-                font-size: 1.125rem;
-                color:$text-gray;
-                font-weight: bold;
+          @include for-screen($screen: $breakpoint-layout) {
+            grid-row: 3 / 4;
+            grid-column: 1 / 2;
+          }
+          // toggle container
+          & > div:first-child {
+            background-color: $bg-gray;
+            width: 3rem;
+            height: 1.5rem;
+            border-radius: 5px;
+            padding: 2px;
+            margin-right: 1rem;
+
+            & > div {
+              background-color: $bg-white;
+              width: 1.5rem;
+              height: 100%;
+              border-radius: inherit;
             }
+          }
+
+          //text
+          & > div:last-child {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.125rem;
+            color: $text-gray;
+            font-weight: bold;
+          }
         }
         // send button container
         &:last-child {
-          grid-column: 3 /4;
+
+          @include for-phone{
+            grid-column: 2 / 3;
+            grid-row: 3 / 4;
+          }
+
+          @include for-screen($screen:$breakpoint-layout){
+            grid-column: 3 / 4 ;
+          }
           text-align: end;
           & > button {
             border: none;
@@ -149,7 +208,9 @@ $gap: 1rem;
 
   & > p {
     margin: 0 1rem;
-    font-size: 1rem;
+    font-size: 0.85rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     font-weight: bold;
     font-family: "Courier New", Courier, monospace;
     color: $text-gray;

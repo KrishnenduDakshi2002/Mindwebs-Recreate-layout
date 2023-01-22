@@ -1,58 +1,100 @@
-@import './partials/colors';
+@import "./partials/colors";
+@import './partials/media';
 
-.coin__container{
-    display: grid;
-    grid-template-rows: 0.3fr 1fr;
-    height: 100%;
-    row-gap: 1.2rem;
-    overflow: hidden;
-    & > div:first-child{
-        // background-color:red;
-        display: flex;
-        align-items: center;
-
-        & > div{
-            display: flex;
-            align-items: center;
-        }
-    }
-    & > div:last-child{
-        overflow: scroll;
-        display: grid;
-        grid-auto-flow: row;
-        grid-auto-rows: 25%;
-    }
-}
-
-.cointile{
-    // height: 5rem;
-    border-top: 1px solid $text-light-gray;
+.coin__container {
+  display: grid;
+  grid-template-rows: 0.2fr 1fr;
+  height: 100%;
+  overflow: hidden;
+  row-gap: 1rem;
+//   header
+  & > div:first-child {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    // coin name and icon
-    & > div:first-child{
-        display: flex;
-        & > div{
-            &:first-child{
-                $box-size:1.1rem;
-                background-color: yellowgreen;
-                width: $box-size;
-                height: $box-size;
-                border-radius: 50%;
-                color: red;
-                margin: 0 1rem;
-            }
-            &:last-child{
-                color: blue;
-                margin: 0 0.5rem;
-            }
+    & > div {
+      display: flex;
+      align-items: center;
+      
+    //   icon and text container
+      &:first-child{
+        // text
+        & > p{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-left: 1rem;
+            color: $text-gray;
         }
-        
+      }
+    // price 
+    &:last-child{
+        color: $text-dark;
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+        margin-right: 1rem;
     }
-    // price
-    & > div:last-child{
-        background-color: yellow;
     }
+  }
+  & > div:last-child {
+    overflow: scroll;
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-rows: 25%;
+  }
+}
+
+.cointile {
+  // height: 5rem;
+  border-top: 1px solid $text-light-gray;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  // coin name and icon
+  & > div:first-child {
+    display: flex;
+    padding: 0.75rem 0;
+    
+    @include for-tablet-portrait{
+      
+      padding: 7px 0;
+    }
+    
+    & > div {
+
+        // circle
+      &:first-child {
+        $box-size: 1.1rem;
+        background-color: #0068f6;
+        width: $box-size;
+        height: $box-size;
+        border-radius: 50%;
+        margin: 0 1rem;
+      }
+
+    //   coin name text
+      &:last-child {
+        font-family:Arial, Helvetica, sans-serif ;
+        margin: 0 0.5rem;
+        color: $text-gray;
+        font-weight: 800;
+        font-size: 0.9rem;
+        & > span{
+            color: $text-medium;
+            margin-left: 5px;
+        }
+
+      }
+    }
+  }
+  // price
+  & > div:last-child {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: $text-medium;
+    font-family: sans-serif;
+    margin-right: 1rem;
+  }
 }

@@ -1,9 +1,14 @@
 @import "./partials/colors";
+@import "./partials/media";
 
 $border-radius: 15px;
 $border-color: $text-light-gray;
-$gap: 1rem;
-$Padding-in-children : 1.3rem;
+$gap: 1.3rem;
+$Padding-in-children: 1.3rem;
+
+$screen-size-for-grid-layout-change: 680px;
+
+
 @mixin BorderStyle {
   border: 1px solid $border-color;
   border-radius: $border-radius;
@@ -12,47 +17,86 @@ $Padding-in-children : 1.3rem;
 .home {
   height: 100%;
   display: grid;
-  grid-template-rows: 0.725fr 1.5fr 3fr 4fr;
+
+  @include for-screen($screen: 680px) {
+    grid-template-rows: 2rem 1.5fr 3fr 5fr;
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  grid-template-rows: 2rem 1.5fr 3fr 5fr 5fr;
+  grid-template-columns: 1fr;
+
   row-gap: $gap;
-  padding: 0 0 0 1rem;
+  column-gap: $gap;
+  padding: 0;
+  @include for-tablet-landscape{
+    padding: 0 0 0 1rem;
+  }
   // can be scrolled for small screens and static
-  // overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   & > div {
     // dashboard
-    &:nth-child(1) > div {
-      height: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      & > h1 {
-        color: $text-dark;
-        font-size: 1.7rem;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    &:nth-child(1) {
+      @include for-screen($screen: $screen-size-for-grid-layout-change) {
+        grid-column: 1 / 3;
       }
-      // toggle switch
-      & > div > div {
-        background-color: $bg-gray;
+      grid-column: 1 / 2;
+      & > div {
+        height: 100%;
         display: flex;
-        border-radius: 10px;
-        padding: 0.2rem;
-        color: $text-dark;
-        font-family: sans-serif;
-        & > div {
-          padding: 0.3rem 1.35rem;
-          border-radius: 7px;
-          display: flex;
-          align-items: center;
+        justify-content: space-between;
+        align-items: center;
+        & > h1 {
+          color: $text-dark;
+
+          font-size: 1.4rem;
+          @include for-tablet-portrait{
+            font-size: 1.7rem;
+          }
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         }
-        & > div:first-child {
-          background-color: $bg-white;
+        // toggle switch
+        & > div > div {
+          background-color: $bg-gray;
+          display: flex;
+          border-radius: 10px;
+          padding: 0.2rem;
+          color: $text-dark;
+          font-family: sans-serif;
+          & > div {
+            padding: 0.275rem 1.2rem;
+            font-size: 0.8rem;
+            @include for-tablet-portrait{
+              font-size: 1rem;
+              padding: 0.3rem 1.35rem;
+            }
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+          }
+          & > div:first-child {
+            background-color: $bg-white;
+          }
         }
       }
     }
     // Userprofile
     &:nth-child(2) {
+      @include for-screen($screen: $screen-size-for-grid-layout-change) {
+        grid-column: 1 / 3;
+      }
+      grid-column: 1 / 2;
       & > div {
-        width: 50%;
-        min-width: 35rem;
+        width: 100%;
+        @include for-tablet-landscape{
+          width: 75%;
+        }
+        @include for-laptop{
+          width: 50%;
+        }
+
+
         height: 100%;
         overflow: hidden;
         padding: $Padding-in-children;
@@ -62,75 +106,32 @@ $Padding-in-children : 1.3rem;
     }
     // receipt container
     &:nth-child(3) {
+      @include for-screen($screen: $screen-size-for-grid-layout-change) {
+        grid-column: 1 / 3;
+      }
+      grid-column: 1 / 2;
       @include BorderStyle();
       padding: $Padding-in-children;
     }
-    //NFT container
     &:nth-child(4) {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      column-gap: $gap;
-      overflow: hidden;
+      grid-column: 1 / 2;
+      @include BorderStyle();
       & > div {
-        @include BorderStyle();
-  
-        //coins container
-        &:first-child{
-          padding: $Padding-in-children 0 $Padding-in-children $Padding-in-children;
-          overflow: hidden;
-        }
-        // NFT container
-        &:last-child{
-          $NFT-Scroll-container-gap: 1.3rem;
-          padding: $Padding-in-children;
-          display: grid;
-          grid-template-rows: auto 1fr;
-          row-gap: $NFT-Scroll-container-gap;
-          & > div{
-            // icon and price container
-            &:first-child{
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
 
-              // icon and text container
-              & > div:first-child{
-                display: flex;
-                align-items: center;
-
-                // NFT text
-                & > div:nth-child(2) > p{
-                  font-family: Arial, Helvetica, sans-serif;
-                  color: $text-dark;
-                  font-size: 1.15rem;
-                  font-weight: bold;
-                  margin-left: 1rem;
-                }
-              }
-
-              // price text
-              & > div:last-child > p{
-                font-family: sans-serif;
-                font-weight: bold;
-                font-size: 1.15rem;
-
-              }
-            }
-            // NFT Horizontal scroll container
-            &:last-child{
-              $NFT-col-gap:1.2rem;
-              display: grid;
-              column-gap: $NFT-col-gap;
-              grid-auto-flow: column;
-              grid-auto-columns: minmax(15rem,calc(50% - calc($NFT-col-gap / 2)));
-              overflow-x: scroll;
-            }
-          }
-        }
-
-
+        padding: $Padding-in-children 0 $Padding-in-children
+          $Padding-in-children;
+        overflow: hidden;
       }
-
+    }
+    &:nth-child(5) {
+      @include for-screen($screen: $screen-size-for-grid-layout-change) {
+        grid-column: 2 / 3;
+      }
+      grid-column: 1 / 2;
+      @include BorderStyle();
+      & > div {
+        padding: $Padding-in-children;
+      }
     }
   }
 }
@@ -143,13 +144,11 @@ $Padding-in-children : 1.3rem;
   padding: 10px 12px;
 }
 
-
 /* this is for Chrome and Safari */
-.scrollbar-hidden::-webkit-scrollbar{
+.scrollbar-hidden::-webkit-scrollbar {
   display: none;
 }
 /* This is for Firefox */
-.scrollbar-hidden{
+.scrollbar-hidden {
   scrollbar-width: none;
 }
-

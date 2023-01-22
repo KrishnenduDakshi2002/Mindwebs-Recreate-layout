@@ -1,9 +1,10 @@
 @import './partials/colors';
 @import './partials/breakpoints';
+@import './partials/media';
 
 $navbar-height:4rem;
 $sidebar-width: 15rem;
-$footer-height: 4rem;
+$footer-height: 5rem;
 $padding-horizontal-body:2.5rem;
 $row-gap:1.6rem;
 
@@ -33,10 +34,18 @@ $row-gap:1.6rem;
     display: grid;
     grid-template-columns: $sidebar-width 1fr;
     grid-template-rows: $navbar-height 1fr $footer-height;
-    padding: 0 $padding-horizontal-body;
+
+    
+    padding: 0 1rem;
+
+    @include for-tablet-landscape{
+        padding: 0 $padding-horizontal-body;
+    }
+    
     row-gap: $row-gap;
     position: relative;
-    overflow: auto;
+    overflow-y: scroll;
+    overflow-x: auto;
 
     // selecting direct child div not all div child
     & > div{
@@ -48,7 +57,7 @@ $row-gap:1.6rem;
             display: none;
         }
         &:nth-child(5){
-            overflow: auto;
+            overflow: hidden;
         }
         
     }
@@ -87,10 +96,12 @@ $row-gap:1.6rem;
     };
 }
 
-@media (max-width: $tablet-landscape){
+@media (max-width: calc($tablet-landscape - 1px)){
     .body{
+        // making home full width
         grid-template-columns: 1fr;
          & > div{
+            // hiding mini side bar 
             &:nth-child(2){
                 display: none;
             }

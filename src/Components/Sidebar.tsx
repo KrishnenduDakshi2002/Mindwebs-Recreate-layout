@@ -70,7 +70,7 @@ function Sidebar({ toggleMiniSidebar }: { toggleMiniSidebar: boolean }) {
           setActive={() => {}}
           active={false}
           index={1}
-          text="Sign-out"
+          text="Sign out"
         />
       </div>
     </div>

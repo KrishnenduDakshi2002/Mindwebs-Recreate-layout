@@ -1,26 +1,83 @@
-@import './partials/colors';
+@import "./partials/colors";
+@import "./partials/media";
 
-.user__profile{
-    // background-color:red;
-    height: 100%;
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    align-items: center;
-    & > div{
-        &:first-child{
-            // background-color: yellow;
-            display: flex;
+$breakpoint-layout: 1140px;
 
-            & > div{
-                height: 100%;
-                display: flex;
-                align-items: center;
-                width: 3rem;
-                & > img{
-                    max-height: 100%;
-                    max-width: 100%;
-                }   
-            }
+.user__profile {
+  // background-color:red;
+  height: 100%;
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+
+  @include for-phone{
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+  }
+  align-items: center;
+  & > div {
+    &:first-child {
+      display: flex;
+      align-items: center;
+      height: 3rem;
+      // image container
+      & > div {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        margin-right: 1rem;
+        & > img {
+          width: 2.5rem;
+          @include for-phone{
+            width: 3rem;
+          }
         }
+      }
+      // text container
+      & > div:last-child {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-evenly;
+
+        // username
+        & > p:first-child {
+          // color: yellow;
+          font-family: Arial, Helvetica, sans-serif;
+          font-weight: bolder;
+        }
+        // decimal
+        & > p:last-child {
+          // color: yellow;
+          font-size: small;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+      }
     }
+
+    &:nth-child(2) {
+      display: flex;
+      justify-content: flex-end;
+      @include for-phone{
+        justify-content: center;
+      }
+      & > div {
+        margin: 0 0.3rem;
+      }
+    }
+    &:last-child {
+      text-align: end;
+      color: $text-dark;
+      font-weight: bold;
+      font-family: Arial, Helvetica, sans-serif;
+      
+      grid-column: 2 / 3;
+      font-size: large;
+      @include for-phone{
+        grid-column: 3 / 4;
+        font-size: x-large;
+      }
+    }
+  }
 }

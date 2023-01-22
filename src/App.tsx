@@ -16,7 +16,7 @@ const App = () => {
       <div>
         <Sidebar toggleMiniSidebar={false}/>
       </div>
-      {/* visible in range of 640px to 1279px */}
+      {/* visible in range of 820px to 1279px */}
       <div>
         <Sidebar toggleMiniSidebar={true}/>
       </div>

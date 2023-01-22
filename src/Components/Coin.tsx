@@ -2,6 +2,28 @@ import React from 'react'
 import '../dist/css/Coin.css'
 import { CustomIconButton } from './Home';
 import { RiBitCoinLine } from 'react-icons/ri';
+const COINS =[
+  {
+    name: 'Decimal',
+    type: 'DEL',
+    price : 7.338080
+  },
+  {
+    name: 'BitTeam Token',
+    type: 'BTT',
+    price : 635.467521
+  },
+  {
+    name: 'Minster Network',
+    type: 'BIP',
+    price : 0.207157
+  },
+  {
+    name: 'Wordlex',
+    type: 'WDX',
+    price : 20.492678
+  },
+]
 function Coin() {
   return (
     <div className='coin__container'>
@@ -16,8 +38,8 @@ function Coin() {
       </div>
       <div>
         {
-          Array.from({length:4},(v,i)=>
-          <CoinTile/>
+          COINS.map((coin,i)=>
+          <CoinTile {...coin}/>
           )
         }
       </div>
@@ -25,15 +47,17 @@ function Coin() {
   )
 }
 
-function CoinTile(){
+function CoinTile({name,type,price,image}:{name:string;type:string;price:number;image?:string}){
   return(
     <div className='cointile'>
       <div>
         <div></div>
-        <div>Coin name</div>
+        <div>{name}
+          <span>{type}</span>
+        </div>
       </div>
       <div>
-      7.338080
+      {price}
       </div>
     </div>
   )

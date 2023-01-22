@@ -42,8 +42,7 @@ function Receipt() {
           />
         </div>
         <div>
-          <Button RightText="BTT" LeftText="48.26" color="" 
-          />
+          <Button RightText="BTT" LeftText="48.26" color=""/>
         </div>
         <div>
           <button>
